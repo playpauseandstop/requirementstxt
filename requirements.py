@@ -176,7 +176,12 @@ def requirements_file(view):
     if not fname:
         return False
     basename = os.path.basename(fname)
-    if basename == "requirements.txt":
+    filenames = (
+        "requirements.txt",
+        "devrequirements.txt", "dev_requirements.txt", "dev-requirements.txt",
+        "requirementsdev.txt", "requirements_dev.txt", "requirements-dev.txt"
+    )
+    if basename in filenames:
         return True
     dirname = os.path.basename(os.path.dirname(fname))
     if dirname == "requirements" and fname.endswith(".txt"):
